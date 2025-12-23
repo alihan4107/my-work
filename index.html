@@ -8,10 +8,2289 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/animations.css">
-    <link rel="stylesheet" href="css/responsive.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <style>
+        /* CSS Variables для светлой темы */
+        :root {
+            /* Цвета */
+            --primary: #4361EE;
+            --primary-dark: #3A0CA3;
+            --secondary: #7209B7;
+            --accent: #F72585;
+            --accent-light: #FF6B9D;
+            --success: #4CC9F0;
+            --success-dark: #3AA8C9;
+            
+            /* Нейтральные цвета */
+            --dark: #212529;
+            --gray-dark: #343A40;
+            --gray: #6C757D;
+            --gray-light: #ADB5BD;
+            --light-gray: #E9ECEF;
+            --light: #F8F9FA;
+            --white: #FFFFFF;
+            
+            /* Градиенты */
+            --gradient-primary: linear-gradient(135deg, #4361EE 0%, #3A0CA3 100%);
+            --gradient-accent: linear-gradient(135deg, #F72585 0%, #B5179E 100%);
+            --gradient-hero: linear-gradient(135deg, #4361EE 0%, #3A0CA3 30%, #7209B7 70%, #F72585 100%);
+            
+            /* Тени */
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.15);
+            
+            /* Скругления */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Шрифты */
+            --font-primary: 'Inter', sans-serif;
+            --font-secondary: 'Nunito', sans-serif;
+            
+            /* Размеры шрифтов */
+            --fs-xs: 0.75rem;   /* 12px */
+            --fs-sm: 0.875rem;  /* 14px */
+            --fs-base: 1rem;    /* 16px */
+            --fs-md: 1.125rem;  /* 18px */
+            --fs-lg: 1.25rem;   /* 20px */
+            --fs-xl: 1.5rem;    /* 24px */
+            --fs-2xl: 1.875rem; /* 30px */
+            --fs-3xl: 2.25rem;  /* 36px */
+            --fs-4xl: 3rem;     /* 48px */
+            --fs-5xl: 3.75rem;  /* 60px */
+            
+            /* Прочие */
+            --transition: all 0.3s ease;
+            --container-width: 1200px;
+            --header-height: 80px;
+        }
+
+        /* Темная тема */
+        [data-theme="dark"] {
+            --dark: #F8F9FA;
+            --gray-dark: #E9ECEF;
+            --gray: #ADB5BD;
+            --gray-light: #6C757D;
+            --light-gray: #343A40;
+            --light: #212529;
+            --white: #121212;
+            
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.2);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.25);
+            --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --shadow-xl: 0 20px 50px rgba(0, 0, 0, 0.35);
+        }
+
+        /* Базовые стили */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-primary);
+            font-size: var(--fs-base);
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: var(--white);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Типография */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-secondary);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: var(--fs-4xl);
+        }
+
+        h2 {
+            font-size: var(--fs-3xl);
+        }
+
+        h3 {
+            font-size: var(--fs-2xl);
+        }
+
+        h4 {
+            font-size: var(--fs-xl);
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            font-family: var(--font-primary);
+            font-weight: 600;
+            font-size: var(--fs-base);
+            border: none;
+            border-radius: var(--radius-md);
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            outline: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(67, 97, 238, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(67, 97, 238, 0.4);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: var(--fs-md);
+        }
+
+        .btn-block {
+            width: 100%;
+        }
+
+        /* Навигация */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-sm);
+            z-index: 1000;
+            height: var(--header-height);
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .navbar {
+            background-color: rgba(24, 24, 24, 0.95);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: var(--font-secondary);
+            font-weight: 800;
+            font-size: var(--fs-xl);
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-primary);
+            color: var(--white);
+            border-radius: var(--radius-md);
+            font-weight: 700;
+        }
+
+        .logo-accent {
+            color: var(--accent);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 4px;
+            padding: 8px;
+        }
+
+        .menu-bar {
+            width: 24px;
+            height: 2px;
+            background-color: var(--dark);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .menu-bar {
+            background-color: var(--light);
+        }
+
+        /* Герой-секция */
+        .hero-section {
+            padding: calc(var(--header-height) + 40px) 0 100px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #4361EE 0%, #3A0CA3 30%, #7209B7 70%, #F72585 100%);
+        }
+
+        .hero-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            color: white;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-size: var(--fs-5xl);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .title-line {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .typing-text {
+            display: inline-block;
+            min-height: 80px;
+        }
+
+        .typing-wrapper {
+            position: relative;
+            display: inline-block;
+        }
+
+        .typing-word {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background: linear-gradient(90deg, #FF6B9D 0%, #FF8E53 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 800;
+            opacity: 0;
+            animation: typingWords 12s infinite;
+        }
+
+        .typing-word:nth-child(1) { animation-delay: 0s; }
+        .typing-word:nth-child(2) { animation-delay: 3s; }
+        .typing-word:nth-child(3) { animation-delay: 6s; }
+        .typing-word:nth-child(4) { animation-delay: 9s; }
+
+        @keyframes typingWords {
+            0%, 20% { opacity: 0; transform: translateY(-10px); }
+            5%, 15% { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-subtitle {
+            font-size: var(--fs-lg);
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-features {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
+        }
+
+        .feature i {
+            color: #4CC9F0;
+            font-size: 1.2rem;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .floating-cards {
+            position: relative;
+            height: 300px;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 16px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .floating-card i {
+            font-size: 2rem;
+            margin-bottom: 5px;
+        }
+
+        .floating-card span {
+            font-size: 0.9rem;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .card-1 {
+            top: 0;
+            left: 0;
+            width: 120px;
+            height: 120px;
+            animation: floatCard1 6s ease-in-out infinite;
+        }
+
+        .card-2 {
+            top: 50px;
+            right: 0;
+            width: 140px;
+            height: 140px;
+            animation: floatCard2 7s ease-in-out infinite;
+        }
+
+        .card-3 {
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130px;
+            height: 130px;
+            animation: floatCard3 5s ease-in-out infinite;
+        }
+
+        @keyframes floatCard1 {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+
+        @keyframes floatCard2 {
+            0%, 100% { transform: translateY(0) rotate(5deg); }
+            50% { transform: translateY(-25px) rotate(-5deg); }
+        }
+
+        @keyframes floatCard3 {
+            0%, 100% { transform: translate(-50%, 0) rotate(0deg); }
+            50% { transform: translate(-50%, -15px) rotate(10deg); }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 60px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), transparent);
+            margin: 0 auto 10px;
+        }
+
+        .scroll-text {
+            font-size: var(--fs-sm);
+            letter-spacing: 1px;
+        }
+
+        /* Секции */
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 60px;
+        }
+
+        .section-title {
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: var(--fs-lg);
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        [data-theme="dark"] .section-subtitle {
+            color: var(--gray-light);
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Секция языков */
+        .languages-section {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--light);
+        }
+
+        [data-theme="dark"] .languages-section {
+            background-color: var(--light-gray);
+        }
+
+        .section-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+
+        .bg-shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.05) 0%, rgba(115, 31, 188, 0.05) 100%);
+        }
+
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            top: -250px;
+            right: -250px;
+        }
+
+        .shape-2 {
+            width: 300px;
+            height: 300px;
+            bottom: 100px;
+            left: -150px;
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            bottom: 300px;
+            right: 100px;
+        }
+
+        .section-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: linear-gradient(135deg, #4361EE 0%, #3A0CA3 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .section-badge i {
+            font-size: 0.9rem;
+        }
+
+        .languages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Карточки языков */
+        .language-card.enhanced {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            height: auto;
+        }
+
+        [data-theme="dark"] .language-card.enhanced {
+            background: var(--gray-dark);
+        }
+
+        .language-card.enhanced:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(67, 97, 238, 0.15);
+        }
+
+        .card-hover-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(67, 97, 238, 0.1) 0%, rgba(115, 31, 188, 0.1) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: -1;
+        }
+
+        .language-card.enhanced:hover .card-hover-effect {
+            opacity: 1;
+        }
+
+        .card-header {
+            padding: 25px 25px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .language-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .language-card.enhanced:nth-child(1) .language-icon {
+            background: linear-gradient(135deg, #006400 0%, #228B22 100%);
+        }
+
+        .language-card.enhanced:nth-child(2) .language-icon {
+            background: linear-gradient(135deg, #0039A6 0%, #D52B1E 100%);
+        }
+
+        .language-card.enhanced:nth-child(3) .language-icon {
+            background: linear-gradient(135deg, #012169 0%, #C8102E 100%);
+        }
+
+        .level-badge {
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .level-badge.easy {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+        }
+
+        .level-badge.medium {
+            background: linear-gradient(135deg, #fd7e14 0%, #ffc107 100%);
+        }
+
+        .level-badge.advanced {
+            background: linear-gradient(135deg, #dc3545 0%, #e83e8c 100%);
+        }
+
+        .card-body {
+            padding: 20px 25px;
+        }
+
+        .language-name {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .language-desc {
+            color: var(--gray);
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        [data-theme="dark"] .language-desc {
+            color: var(--gray-light);
+        }
+
+        .language-stats {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .language-stats .stat {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .language-stats .stat i {
+            color: var(--primary);
+        }
+
+        .language-features {
+            margin-bottom: 20px;
+        }
+
+        .language-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .language-features .fa-check {
+            color: #28a745;
+        }
+
+        .card-footer {
+            padding: 0 25px 25px;
+        }
+
+        .language-card.enhanced.featured {
+            border: 2px solid var(--primary);
+            transform: scale(1.02);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: 20px;
+            right: -10px;
+            background: linear-gradient(135deg, #F72585 0%, #B5179E 100%);
+            color: white;
+            padding: 6px 15px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(247, 37, 133, 0.3);
+        }
+
+        .section-cta {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            background: rgba(67, 97, 238, 0.05);
+            border-radius: 16px;
+        }
+
+        .section-cta a {
+            color: var(--primary);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .section-cta a:hover {
+            gap: 10px;
+        }
+
+        /* Преимущества */
+        .advantages-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .advantages-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.03;
+            z-index: -1;
+        }
+
+        [data-theme="dark"] .advantages-section::before {
+            opacity: 0.05;
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            position: relative;
+        }
+
+        .advantage-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 1;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .advantage-card {
+            background-color: var(--gray-dark);
+        }
+
+        .advantage-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .advantage-number {
+            position: absolute;
+            top: -15px;
+            right: 20px;
+            font-size: var(--fs-2xl);
+            font-weight: 800;
+            color: rgba(67, 97, 238, 0.1);
+            z-index: -1;
+        }
+
+        .advantage-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: var(--radius-full);
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            color: var(--white);
+            font-size: var(--fs-xl);
+        }
+
+        .advantage-title {
+            margin-bottom: 15px;
+            font-size: var(--fs-xl);
+        }
+
+        .advantage-desc {
+            color: var(--gray);
+            font-size: var(--fs-base);
+        }
+
+        [data-theme="dark"] .advantage-desc {
+            color: var(--gray-light);
+        }
+
+        /* Тест */
+        .test-section {
+            background-color: var(--light);
+        }
+
+        [data-theme="dark"] .test-section {
+            background-color: var(--light-gray);
+        }
+
+        .glassmorphism {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-xl);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: var(--shadow-lg);
+            padding: 50px;
+        }
+
+        [data-theme="dark"] .glassmorphism {
+            background: rgba(33, 37, 41, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .quiz-progress {
+            margin-bottom: 40px;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: rgba(67, 97, 238, 0.1);
+            border-radius: var(--radius-full);
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient-primary);
+            border-radius: var(--radius-full);
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            text-align: center;
+            color: var(--gray);
+            font-size: var(--fs-sm);
+        }
+
+        [data-theme="dark"] .progress-text {
+            color: var(--gray-light);
+        }
+
+        .quiz-container {
+            margin-bottom: 40px;
+        }
+
+        .quiz-step {
+            display: none;
+        }
+
+        .quiz-step.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .quiz-question {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: var(--fs-xl);
+        }
+
+        .quiz-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .quiz-option {
+            display: block;
+            cursor: pointer;
+        }
+
+        .quiz-option input {
+            display: none;
+        }
+
+        .option-content {
+            background-color: var(--white);
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        [data-theme="dark"] .option-content {
+            background-color: var(--gray-dark);
+            border-color: var(--gray);
+        }
+
+        .quiz-option input:checked + .option-content {
+            border-color: var(--primary);
+            background-color: rgba(67, 97, 238, 0.05);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+
+        .option-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--radius-full);
+            background: rgba(67, 97, 238, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: var(--fs-lg);
+        }
+
+        .option-text h4 {
+            margin-bottom: 8px;
+            font-size: var(--fs-lg);
+        }
+
+        .option-text p {
+            color: var(--gray);
+            font-size: var(--fs-sm);
+            margin-bottom: 0;
+        }
+
+        [data-theme="dark"] .option-text p {
+            color: var(--gray-light);
+        }
+
+        .option-check {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            color: #28a745;
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: scale(0.5);
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option input:checked + .option-content .option-check {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .quiz-navigation {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .btn-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-icon {
+            transition: transform 0.3s ease;
+        }
+
+        #next-btn:hover .btn-icon {
+            transform: translateX(5px);
+        }
+
+        .btn-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.3);
+            width: 0;
+            transition: width 0.3s ease;
+        }
+
+        /* Результат теста */
+        .result-content {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .result-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-full);
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            color: var(--white);
+            font-size: var(--fs-3xl);
+        }
+
+        .result-title {
+            margin-bottom: 15px;
+        }
+
+        .result-text {
+            font-size: var(--fs-lg);
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        [data-theme="dark"] .result-text {
+            color: var(--gray-light);
+        }
+
+        .result-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .result-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        [data-theme="dark"] .result-card {
+            background-color: var(--gray-dark);
+        }
+
+        .result-card h4 {
+            font-size: var(--fs-sm);
+            color: var(--gray);
+            margin-bottom: 10px;
+        }
+
+        [data-theme="dark"] .result-card h4 {
+            color: var(--gray-light);
+        }
+
+        .result-card p {
+            font-size: var(--fs-lg);
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0;
+        }
+
+        /* Тарифы */
+        .pricing-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 60px;
+        }
+
+        .toggle-label {
+            font-weight: 600;
+            color: var(--gray);
+            position: relative;
+        }
+
+        [data-theme="dark"] .toggle-label {
+            color: var(--gray-light);
+        }
+
+        .toggle-label.active {
+            color: var(--primary);
+        }
+
+        .discount-badge {
+            position: absolute;
+            top: -20px;
+            right: -10px;
+            background-color: var(--accent);
+            color: var(--white);
+            font-size: var(--fs-xs);
+            padding: 3px 8px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle-input {
+            display: none;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--light-gray);
+            border-radius: var(--radius-full);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .toggle-slider:before {
+            content: '';
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            left: 3px;
+            bottom: 3px;
+            background-color: var(--white);
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .toggle-input:checked + .toggle-slider {
+            background: var(--gradient-primary);
+        }
+
+        .toggle-input:checked + .toggle-slider:before {
+            transform: translateX(30px);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .pricing-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        [data-theme="dark"] .pricing-card {
+            background-color: var(--gray-dark);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary);
+        }
+
+        .featured-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient-primary);
+            color: var(--white);
+            padding: 6px 20px;
+            border-radius: var(--radius-full);
+            font-size: var(--fs-sm);
+            font-weight: 600;
+        }
+
+        .pricing-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--light-gray);
+        }
+
+        [data-theme="dark"] .pricing-header {
+            border-bottom-color: var(--gray);
+        }
+
+        .pricing-price {
+            margin: 20px 0;
+            display: flex;
+            align-items: baseline;
+            justify-content: center;
+            gap: 5px;
+        }
+
+        .price-amount {
+            font-size: var(--fs-4xl);
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .price-currency {
+            font-size: var(--fs-xl);
+            font-weight: 600;
+            color: var(--gray);
+        }
+
+        [data-theme="dark"] .price-currency {
+            color: var(--gray-light);
+        }
+
+        .price-period {
+            color: var(--gray);
+            font-size: var(--fs-sm);
+        }
+
+        [data-theme="dark"] .price-period {
+            color: var(--gray-light);
+        }
+
+        .pricing-desc {
+            color: var(--gray);
+            font-size: var(--fs-base);
+            text-align: center;
+        }
+
+        [data-theme="dark"] .pricing-desc {
+            color: var(--gray-light);
+        }
+
+        .pricing-features {
+            flex-grow: 1;
+            margin-bottom: 30px;
+        }
+
+        .pricing-features li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pricing-features .fa-check {
+            color: #28a745;
+        }
+
+        .pricing-features .fa-times {
+            color: var(--gray-light);
+            opacity: 0.5;
+        }
+
+        .pricing-btn {
+            margin-top: auto;
+        }
+
+        /* Отзывы */
+        .reviews-section {
+            background-color: var(--light);
+        }
+
+        [data-theme="dark"] .reviews-section {
+            background-color: var(--light-gray);
+        }
+
+        .reviews-carousel {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .carousel-container {
+            position: relative;
+            height: 400px;
+            overflow: visible;
+        }
+
+        .review-card {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+            opacity: 0;
+            transform: translateX(100%);
+            z-index: 1;
+        }
+
+        [data-theme="dark"] .review-card {
+            background-color: var(--gray-dark);
+        }
+
+        .review-card.active {
+            opacity: 1;
+            transform: translateX(0);
+            z-index: 2;
+        }
+
+        .review-card.prev {
+            transform: translateX(-100%);
+            opacity: 0;
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .review-avatar {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 3px solid var(--primary);
+        }
+
+        .review-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .review-name {
+            margin-bottom: 5px;
+        }
+
+        .review-language {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            font-size: var(--fs-sm);
+            margin-bottom: 10px;
+        }
+
+        [data-theme="dark"] .review-language {
+            color: var(--gray-light);
+        }
+
+        .review-rating {
+            color: #FFC107;
+        }
+
+        .review-content {
+            font-size: var(--fs-md);
+            line-height: 1.7;
+            margin-bottom: 30px;
+            color: var(--gray-dark);
+        }
+
+        [data-theme="dark"] .review-content {
+            color: var(--gray-light);
+        }
+
+        .review-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .review-date {
+            color: var(--gray);
+            font-size: var(--fs-sm);
+        }
+
+        [data-theme="dark"] .review-date {
+            color: var(--gray-light);
+        }
+
+        .carousel-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .carousel-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--white);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: var(--fs-lg);
+            z-index: 10;
+            position: relative;
+        }
+
+        .carousel-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: scale(1.1);
+        }
+
+        .carousel-btn:active {
+            transform: scale(0.95);
+        }
+
+        .carousel-dots {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--light-gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .dot.active {
+            background-color: var(--primary);
+            transform: scale(1.2);
+            border-color: var(--primary);
+        }
+
+        .dot:hover {
+            background-color: var(--primary);
+            opacity: 0.7;
+            transform: scale(1.1);
+        }
+
+        /* Регистрация */
+        .registration-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .registration-form {
+            background-color: var(--white);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        [data-theme="dark"] .registration-form {
+            background-color: var(--gray-dark);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        [data-theme="dark"] .form-group label {
+            color: var(--light);
+        }
+
+        .form-group input,
+        .custom-select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius-md);
+            font-family: var(--font-primary);
+            font-size: var(--fs-base);
+            transition: var(--transition);
+            background-color: var(--white);
+            color: var(--dark);
+        }
+
+        [data-theme="dark"] .form-group input,
+        [data-theme="dark"] .custom-select {
+            background-color: var(--gray);
+            border-color: var(--gray-light);
+            color: var(--light);
+        }
+
+        .form-group input:focus,
+        .custom-select select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+        }
+
+        .custom-select {
+            position: relative;
+        }
+
+        .custom-select select {
+            appearance: none;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background: transparent;
+            font-family: var(--font-primary);
+            font-size: var(--fs-base);
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        [data-theme="dark"] .custom-select select {
+            color: var(--light);
+        }
+
+        .select-arrow {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: var(--gray);
+        }
+
+        .btn-loader {
+            display: none;
+        }
+
+        .btn-loader .loader {
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .form-notice {
+            margin-top: 20px;
+            font-size: var(--fs-sm);
+            color: var(--gray);
+            text-align: center;
+        }
+
+        [data-theme="dark"] .form-notice {
+            color: var(--gray-light);
+        }
+
+        .form-notice a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .registration-visual {
+            position: relative;
+            height: 100%;
+            min-height: 500px;
+        }
+
+        .visual-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: var(--radius-xl);
+        }
+
+        .language-symbol {
+            position: absolute;
+            font-size: 120px;
+            font-weight: 900;
+            opacity: 0.1;
+            color: var(--primary);
+        }
+
+        .arabic-symbol {
+            top: 10%;
+            left: 10%;
+        }
+
+        .russian-symbol {
+            top: 60%;
+            left: 5%;
+        }
+
+        .english-symbol {
+            top: 20%;
+            right: 10%;
+        }
+
+        .spanish-symbol {
+            top: 70%;
+            right: 15%;
+        }
+
+        .visual-content {
+            position: relative;
+            z-index: 1;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: var(--radius-xl);
+            padding: 40px;
+            margin-top: 60px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        [data-theme="dark"] .visual-content {
+            background-color: rgba(33, 37, 41, 0.8);
+        }
+
+        .visual-title {
+            margin-bottom: 30px;
+            color: var(--primary);
+        }
+
+        .visual-list li {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: var(--fs-md);
+        }
+
+        .visual-list .fa-check-circle {
+            color: #28a745;
+            font-size: var(--fs-lg);
+        }
+
+        /* Футер */
+        .footer {
+            background-color: var(--dark);
+            color: var(--light);
+            padding: 80px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-desc {
+            margin: 20px 0;
+            color: var(--gray-light);
+            max-width: 300px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .footer-title {
+            font-size: var(--fs-lg);
+            margin-bottom: 25px;
+            color: var(--white);
+        }
+
+        .footer-column ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column ul li a {
+            color: var(--gray-light);
+            transition: var(--transition);
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: var(--gray-light);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .copyright {
+            color: var(--gray-light);
+        }
+
+        .footer-legal {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-legal a {
+            color: var(--gray-light);
+            transition: var(--transition);
+        }
+
+        .footer-legal a:hover {
+            color: var(--primary);
+        }
+
+        /* Переключатель темы */
+        .theme-toggle {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+        }
+
+        .theme-switch {
+            display: none;
+        }
+
+        .theme-label {
+            width: 60px;
+            height: 30px;
+            background-color: var(--light-gray);
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 6px;
+            cursor: pointer;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .theme-ball {
+            position: absolute;
+            width: 24px;
+            height: 24px;
+            background-color: var(--white);
+            border-radius: 50%;
+            left: 3px;
+            transition: var(--transition);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-switch:checked + .theme-label {
+            background: var(--gradient-primary);
+        }
+
+        .theme-switch:checked + .theme-label .theme-ball {
+            transform: translateX(30px);
+        }
+
+        .theme-label i {
+            font-size: var(--fs-sm);
+            color: var(--white);
+        }
+
+        .fa-sun {
+            color: #FFD700 !important;
+        }
+
+        .fa-moon {
+            color: #F0E68C !important;
+        }
+
+        /* Модальное окно */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            position: relative;
+            background-color: var(--white);
+            border-radius: var(--radius-xl);
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            z-index: 2001;
+            box-shadow: var(--shadow-xl);
+            padding: 40px;
+            transform: scale(0.9);
+            transition: transform 0.3s ease;
+        }
+
+        [data-theme="dark"] .modal-content {
+            background-color: var(--gray-dark);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.1);
+            border: none;
+            color: var(--dark);
+            font-size: var(--fs-lg);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        [data-theme="dark"] .modal-close {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+        }
+
+        .modal-close:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .modal-body {
+            padding-top: 20px;
+        }
+
+        /* Адаптивность */
+        /* Планшеты (768px - 1199px) */
+        @media (max-width: 1199px) {
+            :root {
+                --fs-4xl: 2.5rem;
+                --fs-3xl: 2rem;
+                --fs-2xl: 1.75rem;
+            }
+            
+            .hero-container,
+            .registration-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .hero-visual {
+                order: -1;
+                height: 400px;
+            }
+            
+            .advantages-grid,
+            .pricing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .footer-links {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Мобильные устройства (до 767px) */
+        @media (max-width: 767px) {
+            :root {
+                --fs-5xl: 2.5rem;
+                --fs-4xl: 2rem;
+                --fs-3xl: 1.75rem;
+                --fs-2xl: 1.5rem;
+                --fs-xl: 1.25rem;
+                --fs-lg: 1.125rem;
+                --header-height: 70px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                top: var(--header-height);
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 20px;
+                box-shadow: var(--shadow-md);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            [data-theme="dark"] .nav-menu {
+                background-color: var(--gray-dark);
+            }
+            
+            .nav-menu.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-btn {
+                display: none;
+            }
+            
+            .hero-section {
+                padding: calc(var(--header-height) + 20px) 0 60px;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+            }
+            
+            .languages-grid,
+            .advantages-grid,
+            .pricing-grid,
+            .quiz-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .glassmorphism {
+                padding: 30px 20px;
+            }
+            
+            .registration-form {
+                padding: 30px 20px;
+            }
+            
+            .footer-links {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .footer-legal {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .pricing-toggle {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .discount-badge {
+                position: static;
+                margin-left: 10px;
+            }
+            
+            .carousel-container {
+                height: 450px;
+            }
+        }
+
+        /* Очень маленькие экраны (до 480px) */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: var(--fs-3xl);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--fs-base);
+            }
+            
+            .btn-lg {
+                padding: 14px 24px;
+                font-size: var(--fs-base);
+            }
+            
+            .result-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .review-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .review-avatar {
+                margin: 0 auto;
+            }
+            
+            .carousel-container {
+                height: 500px;
+            }
+        }
+
+        /* Дополнительные анимации */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes ripple {
+            0% {
+                transform: scale(0, 0);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(20, 20);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(67, 97, 238, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+            }
+        }
+
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes shake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            10%, 30%, 50%, 70%, 90% {
+                transform: translateX(-5px);
+            }
+            20%, 40%, 60%, 80% {
+                transform: translateX(5px);
+            }
+        }
+
+        .shake {
+            animation: shake 0.5s ease-in-out;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-content {
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 0 10px rgba(67, 97, 238, 0);
+            }
+        }
+
+        .pricing-card.featured {
+            animation: pulseGlow 3s infinite;
+        }
+
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        .review-card.active {
+            animation: slideInRight 0.5s ease forwards;
+        }
+
+        .review-card.prev {
+            animation: slideInLeft 0.5s ease forwards;
+        }
+
+        .loading-dots {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .loading-dots span {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .loading-dots span:nth-child(1) {
+            animation-delay: -0.32s;
+        }
+
+        .loading-dots span:nth-child(2) {
+            animation-delay: -0.16s;
+        }
+
+        @keyframes bounce {
+            0%, 80%, 100% {
+                transform: scale(0);
+            }
+            40% {
+                transform: scale(1);
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Кнопка переключения темы -->
@@ -54,18 +2333,6 @@
 
     <!-- Герой-секция -->
     <section id="hero" class="hero-section">
-        <video autoplay muted loop playsinline id="hero-video">
-    <!-- Основной источник - Vimeo CDN (самый надежный) -->
-    <source src="Video by RDNE Stock project from Pexels: https://www.pexels.com/video/kids-learning-at-kindergarten-school-8363818/" type="video/mp4">
-    
-    <!-- Резервный источник -->
-    <source src="https://cdn.pixabay.com/video/2019/11/18/32168-366424943_large.mp4" type="video/mp4">
-    
-    <!-- Фоллбэк текст -->
-    Ваш браузер не поддерживает видео.
-</video>
-    </div>
-        
         <div class="container hero-container">
             <div class="hero-content">
                 <div class="hero-badge">
@@ -348,12 +2615,6 @@
                     <h3 class="advantage-title">Сертификат</h3>
                     <p class="advantage-desc">Получите официальный сертификат после завершения каждого уровня</p>
                 </div>
-            </div>
-            
-            <div class="advantages-connection">
-                <div class="connection-line"></div>
-                <div class="connection-line"></div>
-                <div class="connection-line"></div>
             </div>
         </div>
     </section>
@@ -782,8 +3043,6 @@
                         </div>
                     </div>
                     
-                    
-                    
                     <!-- Отзыв 4 -->
                     <div class="review-card">
                         <div class="review-header">
@@ -851,7 +3110,6 @@
                                     <option value="arabic">Арабский</option>
                                     <option value="russian">Русский</option>
                                     <option value="english">Английский</option>
-                                    
                                 </select>
                                 <div class="select-arrow">
                                     <i class="fas fa-chevron-down"></i>
@@ -941,7 +3199,6 @@
                             <li><a href="#">Арабский язык</a></li>
                             <li><a href="#">Русский язык</a></li>
                             <li><a href="#">Английский язык</a></li>
-                            
                         </ul>
                     </div>
                     
@@ -979,11 +3236,851 @@
         <div class="modal-overlay"></div>
     </div>
 
-    <!-- Скрипты -->
-    <script src="js/main.js"></script>
-    <script src="js/animations.js"></script>
-    <script src="js/carousel.js"></script>
-    <script src="js/quiz.js"></script>
-    <script src="js/debug.js"></script>
+    <script>
+        // Основной JavaScript файл для PolyglotWay
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Инициализация всех компонентов
+            initThemeToggle();
+            initMobileMenu();
+            initSmoothScroll();
+            initLanguageCards();
+            initFormValidation();
+            initModal();
+            initScrollAnimations();
+            initPricing();
+            initCarousel();
+            initQuiz();
+        });
+
+        // Переключение темы
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('theme-switch');
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            
+            // Установка сохраненной темы
+            document.documentElement.setAttribute('data-theme', savedTheme);
+            themeToggle.checked = savedTheme === 'dark';
+            
+            // Обработчик переключения темы
+            themeToggle.addEventListener('change', function() {
+                const theme = this.checked ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', theme);
+                localStorage.setItem('theme', theme);
+            });
+        }
+
+        // Мобильное меню
+        function initMobileMenu() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navMenu = document.querySelector('.nav-menu');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            if (!menuToggle || !navMenu) return;
+            
+            menuToggle.addEventListener('click', function() {
+                navMenu.classList.toggle('active');
+                this.classList.toggle('active');
+                
+                // Анимация бургер-меню
+                const bars = this.querySelectorAll('.menu-bar');
+                if (navMenu.classList.contains('active')) {
+                    bars[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
+                    bars[1].style.opacity = '0';
+                    bars[2].style.transform = 'rotate(-45deg) translate(7px, -6px)';
+                } else {
+                    bars[0].style.transform = 'none';
+                    bars[1].style.opacity = '1';
+                    bars[2].style.transform = 'none';
+                }
+            });
+            
+            // Закрытие меню при клике на ссылку
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    
+                    const bars = menuToggle.querySelectorAll('.menu-bar');
+                    bars[0].style.transform = 'none';
+                    bars[1].style.opacity = '1';
+                    bars[2].style.transform = 'none';
+                });
+            });
+            
+            // Закрытие меню при клике вне его
+            document.addEventListener('click', function(event) {
+                if (!navMenu.contains(event.target) && !menuToggle.contains(event.target)) {
+                    navMenu.classList.remove('active');
+                    menuToggle.classList.remove('active');
+                    
+                    const bars = menuToggle.querySelectorAll('.menu-bar');
+                    bars[0].style.transform = 'none';
+                    bars[1].style.opacity = '1';
+                    bars[2].style.transform = 'none';
+                }
+            });
+        }
+
+        // Плавная прокрутка
+        function initSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    
+                    if (href === '#' || href === '#!') return;
+                    
+                    e.preventDefault();
+                    
+                    const targetElement = document.querySelector(href);
+                    if (!targetElement) return;
+                    
+                    const headerHeight = document.querySelector('.navbar').offsetHeight;
+                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        }
+
+        // Карточки языков
+        function initLanguageCards() {
+            const languageCards = document.querySelectorAll('.language-card');
+            const modal = document.getElementById('language-modal');
+            
+            if (!languageCards.length || !modal) return;
+            
+            // Добавление обработчиков для карточек
+            languageCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-10px)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+                
+                // Клик по кнопке
+                const button = card.querySelector('button');
+                if (button) {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Анимация клика
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 150);
+                        
+                        // Показать информацию о языке
+                        const languageName = card.querySelector('.language-name').textContent;
+                        openLanguageModal(languageName);
+                    });
+                }
+            });
+            
+            // Открытие модального окна с информацией о языке
+            function openLanguageModal(languageName) {
+                const modalBody = modal.querySelector('.modal-body');
+                
+                modalBody.innerHTML = `
+                    <h3>${languageName}</h3>
+                    <p>Отличный выбор! Язык ${languageName} откроет для вас новые возможности.</p>
+                    
+                    <div style="margin: 20px 0; padding: 15px; background: var(--light); border-radius: 12px;">
+                        <h4>Следующие шаги:</h4>
+                        <ol style="margin-left: 20px; margin-top: 10px;">
+                            <li style="margin-bottom: 8px;">Заполните форму регистрации ниже</li>
+                            <li style="margin-bottom: 8px;">Определите свой уровень на бесплатном уроке</li>
+                            <li>Начните обучение по индивидуальной программе</li>
+                        </ol>
+                    </div>
+                    
+                    <div style="display: flex; gap: 15px; margin-top: 25px;">
+                        <button class="btn btn-outline" onclick="closeModal()">Вернуться к выбору</button>
+                        <button class="btn btn-primary" onclick="window.location.href='#registration'">Записаться на курс</button>
+                    </div>
+                `;
+                
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            }
+            
+            // Закрытие модального окна
+            const closeModalBtn = modal.querySelector('.modal-close');
+            const modalOverlay = modal.querySelector('.modal-overlay');
+            
+            closeModalBtn.addEventListener('click', closeModal);
+            modalOverlay.addEventListener('click', closeModal);
+            
+            // Закрытие по клавише Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.classList.contains('active')) {
+                    closeModal();
+                }
+            });
+        }
+
+        // Валидация формы
+        function initFormValidation() {
+            const form = document.getElementById('signup-form');
+            if (!form) return;
+            
+            const submitBtn = form.querySelector('#submit-btn');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoader = submitBtn.querySelector('.btn-loader');
+            
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Валидация полей
+                const nameInput = document.getElementById('name');
+                const emailInput = document.getElementById('email');
+                const languageSelect = document.getElementById('language-select');
+                
+                let isValid = true;
+                
+                // Валидация имени
+                if (!nameInput.value.trim()) {
+                    showError(nameInput, 'Пожалуйста, введите ваше имя');
+                    isValid = false;
+                } else {
+                    clearError(nameInput);
+                }
+                
+                // Валидация email
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (!emailInput.value.trim()) {
+                    showError(emailInput, 'Пожалуйста, введите ваш email');
+                    isValid = false;
+                } else if (!emailRegex.test(emailInput.value)) {
+                    showError(emailInput, 'Пожалуйста, введите корректный email');
+                    isValid = false;
+                } else {
+                    clearError(emailInput);
+                }
+                
+                // Валидация выбора языка
+                if (!languageSelect.value) {
+                    showError(languageSelect.parentElement, 'Пожалуйста, выберите язык');
+                    isValid = false;
+                } else {
+                    clearError(languageSelect.parentElement);
+                }
+                
+                if (!isValid) return;
+                
+                // Имитация отправки формы
+                btnText.style.display = 'none';
+                btnLoader.style.display = 'block';
+                submitBtn.disabled = true;
+                
+                setTimeout(() => {
+                    // В реальном приложении здесь был бы fetch запрос
+                    
+                    // Показываем сообщение об успехе
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'success-message';
+                    successMessage.innerHTML = `
+                        <div style="background-color: #d4edda; color: #155724; padding: 15px; border-radius: 8px; margin-top: 20px; border: 1px solid #c3e6cb;">
+                            <div style="display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-check-circle" style="color: #28a745; font-size: 20px;"></i>
+                                <div>
+                                    <strong>Заявка отправлена успешно!</strong>
+                                    <p style="margin: 5px 0 0 0; font-size: 14px;">Мы свяжемся с вами в течение 24 часов для подтверждения пробного урока.</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    form.appendChild(successMessage);
+                    
+                    // Сброс формы
+                    form.reset();
+                    
+                    // Восстановление кнопки
+                    btnText.style.display = 'block';
+                    btnLoader.style.display = 'none';
+                    submitBtn.disabled = false;
+                    
+                    // Прокрутка к сообщению об успехе
+                    successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                    
+                    // Удаление сообщения через 5 секунд
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 5000);
+                }, 1500);
+            });
+            
+            // Функции для отображения ошибок
+            function showError(input, message) {
+                clearError(input);
+                
+                const error = document.createElement('div');
+                error.className = 'error-message';
+                error.style.color = '#dc3545';
+                error.style.fontSize = '14px';
+                error.style.marginTop = '5px';
+                error.textContent = message;
+                
+                input.parentElement.appendChild(error);
+                input.style.borderColor = '#dc3545';
+                
+                // Анимация встряски
+                input.classList.add('shake');
+                setTimeout(() => {
+                    input.classList.remove('shake');
+                }, 500);
+            }
+            
+            function clearError(input) {
+                const error = input.parentElement.querySelector('.error-message');
+                if (error) {
+                    error.remove();
+                }
+                input.style.borderColor = '';
+            }
+        }
+
+        // Модальное окно
+        function initModal() {
+            // Уже инициализировано в initLanguageCards
+        }
+
+        // Анимации при скролле
+        function initScrollAnimations() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            if (!fadeElements.length) return;
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // Добавляем класс fade-in ко всем карточкам
+            document.querySelectorAll('.language-card, .advantage-card, .pricing-card, .review-card').forEach((element, index) => {
+                element.classList.add('fade-in');
+                element.style.animationDelay = `${index * 0.1}s`;
+            });
+        }
+
+        // Функционал для тарифов
+        function initPricing() {
+            const pricingToggle = document.getElementById('pricing-toggle');
+            const priceAmounts = document.querySelectorAll('.price-amount');
+            const pricingButtons = document.querySelectorAll('.pricing-btn');
+            
+            // Переключение периодов (месяц/год)
+            if (pricingToggle && priceAmounts.length) {
+                pricingToggle.addEventListener('change', function() {
+                    const isYearly = this.checked;
+                    
+                    priceAmounts.forEach(amount => {
+                        const monthlyPrice = amount.getAttribute('data-monthly');
+                        const yearlyPrice = amount.getAttribute('data-yearly');
+                        
+                        if (monthlyPrice && yearlyPrice) {
+                            amount.textContent = isYearly ? yearlyPrice : monthlyPrice;
+                            
+                            // Анимация изменения цены
+                            amount.style.transform = 'scale(1.1)';
+                            setTimeout(() => {
+                                amount.style.transform = 'scale(1)';
+                            }, 200);
+                        }
+                    });
+                });
+            }
+            
+            // Обработчики для кнопок выбора тарифа
+            if (pricingButtons.length) {
+                pricingButtons.forEach((button, index) => {
+                    button.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        // Определяем выбранный тариф
+                        let tariffName = '';
+                        let tariffPrice = '';
+                        
+                        const pricingCard = this.closest('.pricing-card');
+                        if (pricingCard) {
+                            const title = pricingCard.querySelector('.pricing-title');
+                            const price = pricingCard.querySelector('.price-amount');
+                            
+                            tariffName = title ? title.textContent : `Тариф ${index + 1}`;
+                            tariffPrice = price ? price.textContent : '';
+                        }
+                        
+                        // Анимация нажатия кнопки
+                        this.style.transform = 'scale(0.95)';
+                        setTimeout(() => {
+                            this.style.transform = 'scale(1)';
+                        }, 150);
+                        
+                        // Показываем модальное окно
+                        const modal = document.getElementById('language-modal');
+                        const modalBody = modal.querySelector('.modal-body');
+                        
+                        modalBody.innerHTML = `
+                            <h3>Выбор тарифа</h3>
+                            <p>Вы выбрали тариф: <strong>${tariffName}</strong></p>
+                            ${tariffPrice ? `<p>Стоимость: <strong>${tariffPrice} ₽</strong></p>` : ''}
+                            
+                            <div style="margin: 30px 0; padding: 20px; background: var(--light); border-radius: 12px;">
+                                <h4 style="margin-bottom: 15px;">Что дальше?</h4>
+                                <ol style="margin-left: 20px;">
+                                    <li style="margin-bottom: 10px;">Заполните форму регистрации</li>
+                                    <li style="margin-bottom: 10px;">С вами свяжется менеджер для подтверждения</li>
+                                    <li>Начнете обучение в выбранное время</li>
+                                </ol>
+                            </div>
+                            
+                            <div style="display: flex; gap: 15px; margin-top: 30px;">
+                                <button class="btn btn-outline" onclick="closeModal()">Вернуться к тарифам</button>
+                                <button class="btn btn-primary" onclick="window.location.href='#registration'">Перейти к регистрации</button>
+                            </div>
+                        `;
+                        
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    });
+                });
+            }
+        }
+
+        // Карусель отзывов
+        function initCarousel() {
+            const carouselContainer = document.querySelector('.carousel-container');
+            const reviewCards = document.querySelectorAll('.review-card');
+            const prevBtn = document.querySelector('.carousel-btn.prev-btn');
+            const nextBtn = document.querySelector('.carousel-btn.next-btn');
+            const dots = document.querySelectorAll('.dot');
+            
+            if (!carouselContainer || !reviewCards.length) {
+                console.error('Карусель не найдена!');
+                return;
+            }
+            
+            let currentIndex = 0;
+            let autoPlayInterval;
+            const totalSlides = reviewCards.length;
+            
+            // Показ определенного слайда
+            function showSlide(index) {
+                // Корректируем индекс если вышли за границы
+                if (index < 0) index = totalSlides - 1;
+                if (index >= totalSlides) index = 0;
+                
+                // Скрываем все слайды
+                reviewCards.forEach(card => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateX(100%)';
+                    card.style.display = 'none';
+                    card.classList.remove('active');
+                });
+                
+                // Показываем текущий слайд
+                reviewCards[index].style.display = 'block';
+                reviewCards[index].style.opacity = '1';
+                reviewCards[index].style.transform = 'translateX(0)';
+                reviewCards[index].classList.add('active');
+                
+                // Обновляем активную точку
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+                
+                currentIndex = index;
+            }
+            
+            // Следующий слайд
+            function nextSlide() {
+                let nextIndex = currentIndex + 1;
+                if (nextIndex >= totalSlides) {
+                    nextIndex = 0;
+                }
+                showSlide(nextIndex);
+            }
+            
+            // Предыдущий слайд
+            function prevSlide() {
+                let prevIndex = currentIndex - 1;
+                if (prevIndex < 0) {
+                    prevIndex = totalSlides - 1;
+                }
+                showSlide(prevIndex);
+            }
+            
+            // Автопрокрутка
+            function startAutoPlay() {
+                stopAutoPlay(); // Останавливаем предыдущий интервал если есть
+                autoPlayInterval = setInterval(nextSlide, 5000);
+            }
+            
+            function stopAutoPlay() {
+                if (autoPlayInterval) {
+                    clearInterval(autoPlayInterval);
+                    autoPlayInterval = null;
+                }
+            }
+            
+            // Обработчики событий для кнопок
+            if (prevBtn) {
+                prevBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    prevSlide();
+                    stopAutoPlay();
+                    startAutoPlay();
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    nextSlide();
+                    stopAutoPlay();
+                    startAutoPlay();
+                });
+            }
+            
+            // Обработчики для точек
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    showSlide(index);
+                    stopAutoPlay();
+                    startAutoPlay();
+                });
+            });
+            
+            // Пауза автопрокрутки при наведении
+            if (carouselContainer) {
+                carouselContainer.addEventListener('mouseenter', stopAutoPlay);
+                carouselContainer.addEventListener('mouseleave', startAutoPlay);
+            }
+            
+            // Инициализация - показываем первый слайд
+            showSlide(0);
+            startAutoPlay();
+            
+            // Обработка клавиатуры
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                    stopAutoPlay();
+                    startAutoPlay();
+                } else if (e.key === 'ArrowRight') {
+                    nextSlide();
+                    stopAutoPlay();
+                    startAutoPlay();
+                }
+            });
+        }
+
+        // Интерактивный тест уровня
+        function initQuiz() {
+            const quizSteps = document.querySelectorAll('.quiz-step');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const progressFill = document.querySelector('.progress-fill');
+            const currentQuestionEl = document.getElementById('current-question');
+            const totalQuestionsEl = document.getElementById('total-questions');
+            const getProgramBtn = document.getElementById('get-program-btn');
+            
+            if (!quizSteps.length) return;
+            
+            let currentStep = 0;
+            const totalSteps = quizSteps.length - 1; // -1 потому что последний шаг - результат
+            const answers = {};
+            
+            // Инициализация
+            totalQuestionsEl.textContent = totalSteps;
+            updateNavigation();
+            
+            // Обработчики кнопок
+            if (prevBtn) prevBtn.addEventListener('click', goToPrevStep);
+            if (nextBtn) nextBtn.addEventListener('click', goToNextStep);
+            
+            if (getProgramBtn) {
+                getProgramBtn.addEventListener('click', function() {
+                    window.location.href = '#registration';
+                });
+            }
+            
+            // Функции навигации
+            function goToPrevStep() {
+                if (currentStep > 0) {
+                    currentStep--;
+                    showStep(currentStep);
+                    updateNavigation();
+                }
+            }
+            
+            function goToNextStep() {
+                // Проверяем, выбран ли ответ на текущем шаге
+                const currentStepElement = quizSteps[currentStep];
+                const selectedOption = currentStepElement.querySelector('input:checked');
+                
+                if (!selectedOption && currentStep < totalSteps) {
+                    // Анимация для непрочитанных вопросов
+                    const options = currentStepElement.querySelectorAll('.quiz-option');
+                    options.forEach(option => {
+                        option.classList.add('shake');
+                        setTimeout(() => option.classList.remove('shake'), 500);
+                    });
+                    return;
+                }
+                
+                // Сохраняем ответ
+                if (selectedOption) {
+                    const questionName = selectedOption.getAttribute('name');
+                    answers[questionName] = selectedOption.value;
+                }
+                
+                if (currentStep < totalSteps) {
+                    currentStep++;
+                    showStep(currentStep);
+                    
+                    // Если это последний вопрос, показываем результат
+                    if (currentStep === totalSteps) {
+                        showResult();
+                    }
+                    
+                    updateNavigation();
+                }
+            }
+            
+            // Показ определенного шага
+            function showStep(stepIndex) {
+                quizSteps.forEach((step, index) => {
+                    step.classList.toggle('active', index === stepIndex);
+                });
+                
+                // Обновление прогресс-бара
+                const progressPercentage = ((stepIndex + 1) / totalSteps) * 100;
+                progressFill.style.width = `${progressPercentage}%`;
+                
+                // Обновление номера вопроса
+                currentQuestionEl.textContent = stepIndex + 1;
+            }
+            
+            // Обновление состояния кнопок навигации
+            function updateNavigation() {
+                if (prevBtn) prevBtn.disabled = currentStep === 0;
+                
+                if (currentStep === totalSteps) {
+                    if (nextBtn) nextBtn.style.display = 'none';
+                    if (prevBtn) prevBtn.style.display = 'none';
+                } else {
+                    if (nextBtn) {
+                        nextBtn.textContent = currentStep === totalSteps - 1 ? 'Узнать результат' : 'Далее <i class="fas fa-arrow-right"></i>';
+                        nextBtn.style.display = 'flex';
+                    }
+                    if (prevBtn) prevBtn.style.display = 'flex';
+                }
+            }
+            
+            // Показ результата
+            function showResult() {
+                // Определяем рекомендуемый курс на основе ответов
+                const language = answers.language || 'english';
+                const level = answers.level || 'beginner';
+                const time = answers.time || 'moderate';
+                
+                let recommendedCourse = '';
+                let intensity = '';
+                let outcome = '';
+                
+                // Определение курса
+                switch(language) {
+                    case 'arabic':
+                        recommendedCourse = 'Арабский для начинающих';
+                        break;
+                    case 'russian':
+                        recommendedCourse = 'Русский как иностранный';
+                        break;
+                    case 'english':
+                        recommendedCourse = level === 'beginner' ? 'Английский для начинающих' : 'Разговорный английский';
+                        break;
+                    default:
+                        recommendedCourse = 'Английский для начинающих';
+                }
+                
+                // Определение интенсивности
+                switch(time) {
+                    case 'light':
+                        intensity = '2-3 занятия в неделю';
+                        break;
+                    case 'moderate':
+                        intensity = '3-4 занятия в неделю';
+                        break;
+                    case 'intensive':
+                        intensity = '5-6 занятий в неделю';
+                        break;
+                    default:
+                        intensity = '3 занятия в неделю';
+                }
+                
+                // Определение результата
+                switch(level) {
+                    case 'beginner':
+                        outcome = 'Уровень A2 за 4 месяца';
+                        break;
+                    case 'elementary':
+                        outcome = 'Уровень B1 за 3 месяца';
+                        break;
+                    case 'intermediate':
+                        outcome = 'Уровень B2 за 5 месяцев';
+                        break;
+                    case 'advanced':
+                        outcome = 'Уровень C1 за 6 месяцев';
+                        break;
+                    default:
+                        outcome = 'Уровень A2 за 4 месяца';
+                }
+                
+                // Обновление текста результатов
+                document.getElementById('result-course').textContent = recommendedCourse;
+                document.getElementById('result-intensity').textContent = intensity;
+                document.getElementById('result-outcome').textContent = outcome;
+                
+                // Сохранение результатов в localStorage
+                localStorage.setItem('quizResults', JSON.stringify({
+                    course: recommendedCourse,
+                    intensity: intensity,
+                    outcome: outcome,
+                    language: language,
+                    level: level,
+                    time: time
+                }));
+            }
+            
+            // Обработка выбора ответов
+            quizSteps.forEach(step => {
+                const options = step.querySelectorAll('input[type="radio"]');
+                options.forEach(option => {
+                    option.addEventListener('change', function() {
+                        // Автоматический переход к следующему вопросу через 1 секунду
+                        // (опционально, можно закомментировать если не нужно)
+                        // if (currentStep < totalSteps - 1) {
+                        //     setTimeout(goToNextStep, 1000);
+                        // }
+                    });
+                });
+            });
+            
+            // Загрузка предыдущих результатов, если есть
+            const savedResults = localStorage.getItem('quizResults');
+            if (savedResults) {
+                try {
+                    const results = JSON.parse(savedResults);
+                    // Можно использовать сохраненные результаты для предзаполнения
+                    console.log('Загружены предыдущие результаты теста:', results);
+                } catch (e) {
+                    console.error('Ошибка при загрузке сохраненных результатов:', e);
+                }
+            }
+        }
+
+        // Функция для закрытия модального окна
+        function closeModal() {
+            const modal = document.getElementById('language-modal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Делаем функцию closeModal глобальной
+        window.closeModal = closeModal;
+
+        // Инициализация анимаций
+        window.addEventListener('load', function() {
+            // Задержка для плавного появления элементов
+            setTimeout(() => {
+                document.body.style.opacity = '1';
+            }, 100);
+            
+            // Инициализация анимаций для карточек
+            initCardAnimations();
+        });
+
+        // Устанавливаем начальную прозрачность для плавного появления
+        document.body.style.opacity = '0';
+        document.body.style.transition = 'opacity 0.5s ease';
+
+        // Анимации для карточек
+        function initCardAnimations() {
+            const enhancedCards = document.querySelectorAll('.language-card.enhanced');
+            
+            enhancedCards.forEach(card => {
+                // Эффект при наведении
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                    
+                    // Анимация для эффекта свечения
+                    const hoverEffect = this.querySelector('.card-hover-effect');
+                    if (hoverEffect) {
+                        hoverEffect.style.opacity = '1';
+                    }
+                    
+                    // Анимация иконки
+                    const icon = this.querySelector('.language-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1.1) rotate(5deg)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '';
+                    
+                    // Убираем эффект свечения
+                    const hoverEffect = this.querySelector('.card-hover-effect');
+                    if (hoverEffect) {
+                        hoverEffect.style.opacity = '0';
+                    }
+                    
+                    // Возвращаем иконку в исходное состояние
+                    const icon = this.querySelector('.language-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1) rotate(0)';
+                    }
+                });
+            });
+            
+            // Анимации для преимуществ
+            const advantageCards = document.querySelectorAll('.advantage-card');
+            advantageCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.advantage-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1.1) rotate(5deg)';
+                    }
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.advantage-icon');
+                    if (icon) {
+                        icon.style.transform = 'scale(1) rotate(0)';
+                    }
+                });
+            });
+        }
+    </script>
 </body>
 </html>
