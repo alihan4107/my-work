@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PolyglotWay — Онлайн-школа изучения языков</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+<body>
+    <!-- Кнопка переключения темы -->
+    <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch" class="theme-switch">
+        <label for="theme-switch" class="theme-label">
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+            <span class="theme-ball"></span>
+        </label>
+    </div>
+
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <span class="logo-icon">PW</span>
+                <span class="logo-text">Polyglot<span class="logo-accent">Way</span></span>
+            </a>
+            
+            <button class="menu-toggle" aria-label="Открыть меню">
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+                <span class="menu-bar"></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="#hero" class="nav-link">Главная</a></li>
+                <li><a href="#languages" class="nav-link">Языки</a></li>
+                <li><a href="#advantages" class="nav-link">Преимущества</a></li>
+                <li><a href="#test" class="nav-link">Тест</a></li>
+                <li><a href="#pricing" class="nav-link">Тарифы</a></li>
+                <li><a href="#reviews" class="nav-link">Отзывы</a></li>
+                <li><a href="#registration" class="nav-link">Регистрация</a></li>
+            </ul>
+            
+            <button class="btn btn-outline nav-btn">Войти</button>
+        </div>
+    </nav>
+
+    <!-- Герой-секция -->
+    <section id="hero" class="hero-section">
+        <video autoplay muted loop playsinline id="hero-video">
+    <!-- Основной источник - Vimeo CDN (самый надежный) -->
+    <source src="Video by RDNE Stock project from Pexels: https://www.pexels.com/video/kids-learning-at-kindergarten-school-8363818/" type="video/mp4">
+    
+    <!-- Резервный источник -->
+    <source src="https://cdn.pixabay.com/video/2019/11/18/32168-366424943_large.mp4" type="video/mp4">
+    
+    <!-- Фоллбэк текст -->
+    Ваш браузер не поддерживает видео.
+</video>
+    </div>
+        
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span><i class="fas fa-globe-europe"></i> Языковая онлайн-платформа</span>
+                </div>
+                <h1 class="hero-title">
+                    <span class="title-line">Говори свободно на</span>
+                    <span class="title-line typing-text">
+                        <span class="typing-wrapper">
+                            <span class="typing-word">Английском</span>
+                            <span class="typing-word">Арабском</span>
+                            <span class="typing-word">Русском</span>
+                        </span>
+                    </span>
+                </h1>
+                <p class="hero-subtitle">
+                    Интерактивные уроки с носителями языка. Достигай своих целей в 3 раза быстрее с нашей уникальной методикой.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#registration" class="btn btn-primary btn-lg pulse-animation">
+                        <span>Начать бесплатно</span>
+                        <i class="fas fa-play"></i>
+                    </a>
+                    <a href="#languages" class="btn btn-outline btn-lg">
+                        <span>Смотреть курсы</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                </div>
+                
+                <div class="hero-features">
+                    <div class="feature">
+                        <i class="fas fa-calendar-check"></i>
+                        <span>Гибкое расписание</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Гарантия результата</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-user-tie"></i>
+                        <span>Носители языка</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="hero-visual">
+                <div class="floating-cards">
+                    <div class="floating-card card-1">
+                        <i class="fas fa-comments"></i>
+                        <span>Разговорная практика</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <i class="fas fa-gamepad"></i>
+                        <span>Игровое обучение</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span>Мобильное приложение</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span class="scroll-text">Исследуйте возможности</span>
+        </div>
+    </section>
+
+    <!-- Секция языков -->
+    <section id="languages" class="languages-section">
+        <div class="section-background">
+            <div class="bg-shape shape-1"></div>
+            <div class="bg-shape shape-2"></div>
+            <div class="bg-shape shape-3"></div>
+        </div>
+        
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <i class="fas fa-language"></i>
+                    <span>3 популярных языка</span>
+                </div>
+                <h2 class="section-title">Выберите язык мечты</h2>
+                <p class="section-subtitle">Каждый курс разработан экспертами и включает современные методики обучения</p>
+            </div>
+            
+            <div class="languages-grid">
+                <!-- Арабский -->
+                <div class="language-card enhanced">
+                    <div class="card-header">
+                        <div class="language-icon">
+                            <i class="fas fa-mosque"></i>
+                        </div>
+                        <div class="language-level">
+                            <span class="level-badge advanced">Сложный</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="language-name">Арабский</h3>
+                        <p class="language-desc">Изучите язык с богатой историей, на котором говорят в 25 странах</p>
+                        
+                        <div class="language-stats">
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span>1,200+ студентов</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>24 урока</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="language-features">
+                            <li><i class="fas fa-check"></i> Арабская каллиграфия</li>
+                            <li><i class="fas fa-check"></i> Диалекты стран Ближнего Востока</li>
+                            <li><i class="fas fa-check"></i> Бизнес-арабский</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline btn-block">Подробнее</button>
+                    </div>
+                    <div class="card-hover-effect"></div>
+                </div>
+                
+                <!-- Русский -->
+                <div class="language-card enhanced">
+                    <div class="card-header">
+                        <div class="language-icon">
+                            <i class="fas fa-snowflake"></i>
+                        </div>
+                        <div class="language-level">
+                            <span class="level-badge medium">Средний</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="language-name">Русский</h3>
+                        <p class="language-desc">Самый распространенный славянский язык с богатой литературой</p>
+                        
+                        <div class="language-stats">
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span>2,800+ студентов</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>18 урока</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="language-features">
+                            <li><i class="fas fa-check"></i> Русская грамматика</li>
+                            <li><i class="fas fa-check"></i> Классическая литература</li>
+                            <li><i class="fas fa-check"></i> Деловое общение</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-outline btn-block">Подробнее</button>
+                    </div>
+                    <div class="card-hover-effect"></div>
+                </div>
+                
+                <!-- Английский -->
+                <div class="language-card enhanced featured">
+                    <div class="featured-badge">Самый популярный</div>
+                    <div class="card-header">
+                        <div class="language-icon">
+                            <i class="fas fa-globe-americas"></i>
+                        </div>
+                        <div class="language-level">
+                            <span class="level-badge easy">Легкий</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="language-name">Английский</h3>
+                        <p class="language-desc">Международный язык бизнеса, технологий и путешествий</p>
+                        
+                        <div class="language-stats">
+                            <div class="stat">
+                                <i class="fas fa-users"></i>
+                                <span>3,500+ студентов</span>
+                            </div>
+                            <div class="stat">
+                                <i class="fas fa-clock"></i>
+                                <span>32 урока</span>
+                            </div>
+                        </div>
+                        
+                        <ul class="language-features">
+                            <li><i class="fas fa-check"></i> Подготовка к IELTS/TOEFL</li>
+                            <li><i class="fas fa-check"></i> Бизнес-английский</li>
+                            <li><i class="fas fa-check"></i> Технический английский</li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <button class="btn btn-primary btn-block">Начать обучение</button>
+                    </div>
+                    <div class="card-hover-effect"></div>
+                </div>
+                
+            </div>
+            
+            <div class="section-cta">
+                <p>Не нашли нужный язык? <a href="#">Посмотреть все 12 языков →</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция преимуществ -->
+    <section id="advantages" class="advantages-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Почему выбирают нас</h2>
+                <p class="section-subtitle">Инновационный подход к изучению языков, который действительно работает</p>
+            </div>
+            
+            <div class="advantages-grid">
+                <div class="advantage-card">
+                    <div class="advantage-number">
+                        <span>01</span>
+                    </div>
+                    <div class="advantage-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <h3 class="advantage-title">Живые уроки с носителями</h3>
+                    <p class="advantage-desc">Прямые трансляции и индивидуальные занятия с преподавателями из разных стран</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-number">
+                        <span>02</span>
+                    </div>
+                    <div class="advantage-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h3 class="advantage-title">Геймификация процесса</h3>
+                    <p class="advantage-desc">Интерактивные задания, квесты и система достижений делают обучение увлекательным</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-number">
+                        <span>03</span>
+                    </div>
+                    <div class="advantage-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="advantage-title">Персональная программа</h3>
+                    <p class="advantage-desc">Алгоритм подбирает материалы исходя из ваших целей, уровня и темпа обучения</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-number">
+                        <span>04</span>
+                    </div>
+                    <div class="advantage-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="advantage-title">Разговорные клубы</h3>
+                    <p class="advantage-desc">Еженедельные встречи с носителями языка на актуальные и интересные темы</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-number">
+                        <span>05</span>
+                    </div>
+                    <div class="advantage-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3 class="advantage-title">Мобильное приложение</h3>
+                    <p class="advantage-desc">Занимайтесь в любое время с помощью нашего приложения для iOS и Android</p>
+                </div>
+                
+                <div class="advantage-card">
+                    <div class="advantage-number">
+                        <span>06</span>
+                    </div>
+                    <div class="advantage-icon">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h3 class="advantage-title">Сертификат</h3>
+                    <p class="advantage-desc">Получите официальный сертификат после завершения каждого уровня</p>
+                </div>
+            </div>
+            
+            <div class="advantages-connection">
+                <div class="connection-line"></div>
+                <div class="connection-line"></div>
+                <div class="connection-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция теста -->
+    <section id="test" class="test-section">
+        <div class="container">
+            <div class="test-container glassmorphism">
+                <div class="section-header">
+                    <h2 class="section-title">Определи свой уровень за 2 минуты</h2>
+                    <p class="section-subtitle">Пройдите короткий тест и получите персональную программу обучения</p>
+                </div>
+                
+                <div class="quiz-progress">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 20%"></div>
+                    </div>
+                    <div class="progress-text">Вопрос <span id="current-question">1</span> из <span id="total-questions">4</span></div>
+                </div>
+                
+                <div class="quiz-container">
+                    <div class="quiz-step active" id="step-1">
+                        <h3 class="quiz-question">Какова ваша основная цель изучения языка?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="goal" value="work">
+                                <div class="option-content">
+                                    <div class="option-icon" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                        <i class="fas fa-briefcase"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Карьера</h4>
+                                        <p>Работа в международной компании, переговоры, повышение</p>
+                                    </div>
+                                    <div class="option-check">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="quiz-option">
+                                <input type="radio" name="goal" value="travel">
+                                <div class="option-content">
+                                    <div class="option-icon" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                        <i class="fas fa-plane"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Путешествия</h4>
+                                        <p>Свободное общение за границей, знакомство с культурой</p>
+                                    </div>
+                                    <div class="option-check">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="quiz-option">
+                                <input type="radio" name="goal" value="education">
+                                <div class="option-content">
+                                    <div class="option-icon" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                        <i class="fas fa-graduation-cap"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Образование</h4>
+                                        <p>Учеба за рубежом, международные экзамены, сертификаты</p>
+                                    </div>
+                                    <div class="option-check">
+                                        <i class="fas fa-check-circle"></i>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-step" id="step-2">
+                        <h3 class="quiz-question">Какой язык вы хотите изучать?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="language" value="arabic">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-moon"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Арабский</h4>
+                                        <p>Классический арабский и современные диалекты</p>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="quiz-option">
+                                <input type="radio" name="language" value="russian">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-snowflake"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Русский</h4>
+                                        <p>Для общения, работы или изучения культуры</p>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="quiz-option">
+                                <input type="radio" name="language" value="english">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-globe"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Английский</h4>
+                                        <p>Международный язык бизнеса и путешествий</p>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-step" id="step-3">
+                        <h3 class="quiz-question">Какой у вас текущий уровень?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="level" value="beginner">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-seedling"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Начинающий</h4>
+                                        <p>Только начинаю, знаю несколько слов и фраз</p>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="quiz-option">
+                                <input type="radio" name="level" value="elementary">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-leaf"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Элементарный</h4>
+                                        <p>Могу представиться и поддержать простой диалог</p>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="quiz-option">
+                                <input type="radio" name="level" value="intermediate">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-tree"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Средний</h4>
+                                        <p>Могу общаться на повседневные темы, но с ошибками</p>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="quiz-option">
+                                <input type="radio" name="level" value="advanced">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-mountain"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>Продвинутый</h4>
+                                        <p>Свободно общаюсь, хочу улучшить специфические навыки</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-step" id="step-4">
+                        <h3 class="quiz-question">Сколько времени готовы уделять занятиям?</h3>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="time" value="light">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-walking"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>2-3 часа в неделю</h4>
+                                        <p>Медленный, но стабильный прогресс</p>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="quiz-option">
+                                <input type="radio" name="time" value="moderate">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-running"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>4-6 часов в неделю</h4>
+                                        <p>Оптимальный темп для заметных результатов</p>
+                                    </div>
+                                </div>
+                            </label>
+                            
+                            <label class="quiz-option">
+                                <input type="radio" name="time" value="intensive">
+                                <div class="option-content">
+                                    <div class="option-icon">
+                                        <i class="fas fa-bolt"></i>
+                                    </div>
+                                    <div class="option-text">
+                                        <h4>7+ часов в неделю</h4>
+                                        <p>Интенсивное обучение для быстрого прогресса</p>
+                                    </div>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="quiz-step" id="step-result">
+                        <div class="result-content">
+                            <div class="result-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <h3 class="result-title">Ваша персональная программа готова!</h3>
+                            <p class="result-text">На основе ваших ответов мы подготовили индивидуальный план обучения</p>
+                            
+                            <div class="result-details">
+                                <div class="result-card">
+                                    <h4>Рекомендованный курс:</h4>
+                                    <p id="result-course">Английский для начинающих</p>
+                                </div>
+                                <div class="result-card">
+                                    <h4>Интенсивность:</h4>
+                                    <p id="result-intensity">3 занятия в неделю</p>
+                                </div>
+                                <div class="result-card">
+                                    <h4>Ожидаемый результат:</h4>
+                                    <p id="result-outcome">Уровень A2 за 4 месяца</p>
+                                </div>
+                            </div>
+                            
+                            <button class="btn btn-primary btn-lg" id="get-program-btn">Получить программу</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="quiz-navigation">
+                    <button class="btn btn-outline" id="prev-btn" disabled>
+                        <i class="fas fa-arrow-left"></i> Назад
+                    </button>
+                    <button class="btn btn-primary btn-lg" id="next-btn">
+                        <span class="btn-content">
+                            <span class="btn-text">Следующий вопрос</span>
+                            <span class="btn-icon">
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+                        </span>
+                        <span class="btn-progress"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция тарифов -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Доступные тарифы</h2>
+                <p class="section-subtitle">Выберите подходящий план обучения и начните говорить на новом языке</p>
+            </div>
+            
+            <div class="pricing-toggle">
+                <span class="toggle-label">Месяц</span>
+                <div class="toggle-switch">
+                    <input type="checkbox" id="pricing-toggle" class="toggle-input">
+                    <label for="pricing-toggle" class="toggle-slider"></label>
+                </div>
+                <span class="toggle-label active">Год <span class="discount-badge">Экономия 20%</span></span>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- Базовый тариф -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Базовый</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount" data-monthly="1200" data-yearly="11520">11520</span>
+                            <span class="price-currency">₽</span>
+                            <span class="price-period">/год</span>
+                        </div>
+                        <p class="pricing-desc">Для самостоятельного изучения с доступом к материалам</p>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Доступ ко всем урокам</li>
+                        <li><i class="fas fa-check"></i> Интерактивные упражнения</li>
+                        <li><i class="fas fa-check"></i> Мобильное приложение</li>
+                        <li><i class="fas fa-times"></i> Живые уроки с преподавателем</li>
+                        <li><i class="fas fa-times"></i> Разговорные клубы</li>
+                        <li><i class="fas fa-times"></i> Персональный куратор</li>
+                    </ul>
+                    
+                    <button class="btn btn-outline pricing-btn">Выбрать тариф</button>
+                </div>
+                
+                <!-- PRO тариф -->
+                <div class="pricing-card featured">
+                    <div class="featured-badge">Рекомендуется</div>
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">PRO</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount" data-monthly="2900" data-yearly="27840">27840</span>
+                            <span class="price-currency">₽</span>
+                            <span class="price-period">/год</span>
+                        </div>
+                        <p class="pricing-desc">Полноценное обучение с поддержкой преподавателя</p>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Всё из тарифа Базовый</li>
+                        <li><i class="fas fa-check"></i> 8 живых уроков в месяц</li>
+                        <li><i class="fas fa-check"></i> Участие в разговорных клубах</li>
+                        <li><i class="fas fa-check"></i> Проверка домашних заданий</li>
+                        <li><i class="fas fa-check"></i> Обратная связь от преподавателя</li>
+                        <li><i class="fas fa-times"></i> Индивидуальная программа</li>
+                    </ul>
+                    
+                    <button class="btn btn-primary pricing-btn">Выбрать тариф</button>
+                </div>
+                
+                <!-- Индивидуальный тариф -->
+                <div class="pricing-card">
+                    <div class="pricing-header">
+                        <h3 class="pricing-title">Индивидуальный</h3>
+                        <div class="pricing-price">
+                            <span class="price-amount" data-monthly="5900" data-yearly="56640">56640</span>
+                            <span class="price-currency">₽</span>
+                            <span class="price-period">/год</span>
+                        </div>
+                        <p class="pricing-desc">Персональное обучение с гибким графиком</p>
+                    </div>
+                    
+                    <ul class="pricing-features">
+                        <li><i class="fas fa-check"></i> Всё из тарифа PRO</li>
+                        <li><i class="fas fa-check"></i> Индивидуальные уроки</li>
+                        <li><i class="fas fa-check"></i> Персональный куратор</li>
+                        <li><i class="fas fa-check"></i> Гибкий график занятий</li>
+                        <li><i class="fas fa-check"></i> Программа под ваши цели</li>
+                        <li><i class="fas fa-check"></i> Приоритетная поддержка</li>
+                    </ul>
+                    
+                    <button class="btn btn-outline pricing-btn">Выбрать тариф</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция отзывов -->
+    <section id="reviews" class="reviews-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Истории успеха наших учеников</h2>
+                <p class="section-subtitle">Более 8500 учеников уже свободно говорят на новых языках</p>
+            </div>
+            
+            <div class="reviews-carousel">
+                <div class="carousel-container">
+                    <!-- Отзыв 1 -->
+                    <div class="review-card active">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Мария Иванова">
+                            </div>
+                            <div class="review-info">
+                                <h4 class="review-name">Мария Иванова</h4>
+                                <div class="review-language">
+                                    <i class="fas fa-globe"></i>
+                                    <span>Английский</span>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>За 6 месяцев занятий с нуля достигла уровня B1. Теперь могу свободно общаться с иностранными коллегами и даже вести переписку. Особенно понравились разговорные клубы - там я поборола языковой барьер.</p>
+                        </div>
+                        <div class="review-footer">
+                            <span class="review-date">2 месяца назад</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Отзыв 2 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Алексей Петров">
+                            </div>
+                            <div class="review-info">
+                                <h4 class="review-name">Алексей Петров</h4>
+                                <div class="review-language">
+                                    <i class="fas fa-moon"></i>
+                                    <span>Арабский</span>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>Изучаю арабский для работы. Программа очень хорошо структурирована, начинал с алфавита, сейчас уже могу читать простые тексты. Преподаватель - носитель языка из Египта, объясняет очень доступно.</p>
+                        </div>
+                        <div class="review-footer">
+                            <span class="review-date">5 месяцев назад</span>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <!-- Отзыв 4 -->
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="review-avatar">
+                                <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Джон Смит">
+                            </div>
+                            <div class="review-info">
+                                <h4 class="review-name">Джон Смит</h4>
+                                <div class="review-language">
+                                    <i class="fas fa-snowflake"></i>
+                                    <span>Русский</span>
+                                </div>
+                                <div class="review-rating">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-content">
+                            <p>As an American living in Moscow, I needed to improve my Russian quickly. The personalized program helped me focus on business vocabulary and communication skills. Now I can participate in meetings with Russian partners.</p>
+                        </div>
+                        <div class="review-footer">
+                            <span class="review-date">6 месяцев назад</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="carousel-controls">
+                    <button class="carousel-btn prev-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="carousel-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                    <button class="carousel-btn next-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция регистрации -->
+    <section id="registration" class="registration-section">
+        <div class="container">
+            <div class="registration-container">
+                <div class="registration-form">
+                    <div class="section-header">
+                        <h2 class="section-title">Начни учиться бесплатно</h2>
+                        <p class="section-subtitle">Запишись на пробный урок и получи индивидуальный план обучения</p>
+                    </div>
+                    
+                    <form id="signup-form">
+                        <div class="form-group">
+                            <label for="language-select">Выберите язык</label>
+                            <div class="custom-select">
+                                <select id="language-select" required>
+                                    <option value="" disabled selected>Выберите язык</option>
+                                    <option value="arabic">Арабский</option>
+                                    <option value="russian">Русский</option>
+                                    <option value="english">Английский</option>
+                                    
+                                </select>
+                                <div class="select-arrow">
+                                    <i class="fas fa-chevron-down"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="name">Ваше имя</label>
+                            <input type="text" id="name" placeholder="Введите ваше имя" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="example@mail.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Телефон (необязательно)</label>
+                            <input type="tel" id="phone" placeholder="+7 (999) 123-45-67">
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary btn-lg btn-block" id="submit-btn">
+                            <span class="btn-text">Записаться на бесплатный урок</span>
+                            <div class="btn-loader">
+                                <div class="loader"></div>
+                            </div>
+                        </button>
+                        
+                        <p class="form-notice">Нажимая кнопку, вы соглашаетесь с <a href="#">политикой конфиденциальности</a></p>
+                    </form>
+                </div>
+                
+                <div class="registration-visual">
+                    <div class="visual-background">
+                        <div class="language-symbol arabic-symbol">ع</div>
+                        <div class="language-symbol russian-symbol">Я</div>
+                        <div class="language-symbol english-symbol">A</div>
+                        <div class="language-symbol spanish-symbol">Ñ</div>
+                    </div>
+                    <div class="visual-content">
+                        <h3 class="visual-title">Что вас ждет на пробном уроке?</h3>
+                        <ul class="visual-list">
+                            <li><i class="fas fa-check-circle"></i> Определение вашего уровня</li>
+                            <li><i class="fas fa-check-circle"></i> Знакомство с платформой</li>
+                            <li><i class="fas fa-check-circle"></i> Первый мини-урок с преподавателем</li>
+                            <li><i class="fas fa-check-circle"></i> Индивидуальные рекомендации</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="#" class="logo">
+                        <span class="logo-icon">PW</span>
+                        <span class="logo-text">Polyglot<span class="logo-accent">Way</span></span>
+                    </a>
+                    <p class="footer-desc">Онлайн-школа изучения языков с инновационным подходом и индивидуальными программами.</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="ВКонтакте"><i class="fab fa-vk"></i></a>
+                        <a href="#" aria-label="Telegram"><i class="fab fa-telegram"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4 class="footer-title">Навигация</h4>
+                        <ul>
+                            <li><a href="#hero">Главная</a></li>
+                            <li><a href="#languages">Языки</a></li>
+                            <li><a href="#advantages">Преимущества</a></li>
+                            <li><a href="#test">Тест уровня</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Курсы</h4>
+                        <ul>
+                            <li><a href="#">Арабский язык</a></li>
+                            <li><a href="#">Русский язык</a></li>
+                            <li><a href="#">Английский язык</a></li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-column">
+                        <h4 class="footer-title">Контакты</h4>
+                        <ul class="contact-list">
+                            <li><i class="fas fa-envelope"></i>taovalihan41@gmail.com</li>
+                            <li><i class="fas fa-phone"></i> +7 (909) 491-02-30</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Нальчик, ул. Орджоникидзе 172</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="copyright">© 2025 PolyglotWay. Все права защищены.</p>
+                <div class="footer-legal">
+                    <a href="#">Политика конфиденциальности</a>
+                    <a href="#">Пользовательское соглашение</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно -->
+    <div class="modal" id="language-modal">
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Закрыть">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body">
+                <!-- Контент модального окна будет загружен через JS -->
+            </div>
+        </div>
+        <div class="modal-overlay"></div>
+    </div>
+
+    <!-- Скрипты -->
+    <script src="js/main.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/carousel.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/debug.js"></script>
+</body>
+</html>

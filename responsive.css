@@ -1,0 +1,206 @@
+/* Адаптивность */
+
+/* Планшеты (768px - 1199px) */
+@media (max-width: 1199px) {
+    :root {
+        --fs-4xl: 2.5rem;
+        --fs-3xl: 2rem;
+        --fs-2xl: 1.75rem;
+    }
+    
+    .hero-container,
+    .registration-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .hero-visual {
+        order: -1;
+        height: 400px;
+    }
+    
+    .language-sphere {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .advantages-grid,
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+    
+    .footer-links {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Мобильные устройства (до 767px) */
+@media (max-width: 767px) {
+    :root {
+        --fs-5xl: 2.5rem;
+        --fs-4xl: 2rem;
+        --fs-3xl: 1.75rem;
+        --fs-2xl: 1.5rem;
+        --fs-xl: 1.25rem;
+        --fs-lg: 1.125rem;
+        --header-height: 70px;
+    }
+    
+    section {
+        padding: 60px 0;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+    
+    .nav-menu {
+        position: fixed;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        background-color: var(--white);
+        flex-direction: column;
+        padding: 20px;
+        box-shadow: var(--shadow-md);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+        z-index: 999;
+    }
+    
+    [data-theme="dark"] .nav-menu {
+        background-color: var(--gray-dark);
+    }
+    
+    .nav-menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .menu-toggle {
+        display: flex;
+    }
+    
+    .nav-btn {
+        display: none;
+    }
+    
+    .hero-section {
+        padding: calc(var(--header-height) + 20px) 0 60px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .hero-stats {
+        justify-content: space-between;
+    }
+    
+    .language-sphere {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .sphere-text {
+        font-size: var(--fs-base);
+    }
+    
+    .languages-grid,
+    .advantages-grid,
+    .pricing-grid,
+    .quiz-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .language-card {
+        height: 300px;
+    }
+    
+    .glassmorphism {
+        padding: 30px 20px;
+    }
+    
+    .registration-form {
+        padding: 30px 20px;
+    }
+    
+    .footer-links {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-legal {
+        flex-direction: column;
+        gap: 15px;
+    }
+    
+    .pricing-toggle {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .discount-badge {
+        position: static;
+        margin-left: 10px;
+    }
+    
+    .carousel-container {
+        height: 450px;
+    }
+}
+
+/* Очень маленькие экраны (до 480px) */
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: var(--fs-3xl);
+    }
+    
+    .hero-subtitle {
+        font-size: var(--fs-base);
+    }
+    
+    .btn-lg {
+        padding: 14px 24px;
+        font-size: var(--fs-base);
+    }
+    
+    .stat-number {
+        font-size: var(--fs-2xl);
+    }
+    
+    .card-front, .card-back {
+        padding: 20px;
+    }
+    
+    .result-details {
+        grid-template-columns: 1fr;
+    }
+    
+    .review-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+    
+    .review-avatar {
+        margin: 0 auto;
+    }
+    
+    .carousel-container {
+        height: 500px;
+    }
+}
